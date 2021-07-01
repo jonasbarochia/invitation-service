@@ -1,0 +1,20 @@
+
+I couldn't design front to fnish the exercise but the backend is working as asked.
+
+Assumptions:
+- As per the invitation files, I could see that there will be unique entry for UserId/InviteId.
+- At the implementation level, I have kept unique constraint for the combination of UserId/InviteId in order to avoid duplicate processing for same file.
+- User invitation details are NOT persistent. Means if we restart the Application, we will need to process the files again.
+- I did not use database to keep things simple
+- Only valid JSON files will get processed.
+- Once file gets processed, will be deleted from the upload directory
+
+
+Steps to verify Application behaviour
+- Start the application using InvitationServiceApplication.java
+- Upload the Invitation json file in /Users/jonasbarochia/Downloads/invitation-service/upload-invitations/ (this path is configurable in application.properties)
+- Execute endpoint : localhost:8080/users/1/invitations
+- You should see invitations given in invitation.json.
+- Now place invitation_update.json file above directory.
+- Execute again endpoint : localhost:8080/users/1/invitations
+- Invitation list should contain new entires mentioned in 2nd file
